@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Employee Info Form</title>
+  <script src="https://cdn.ckeditor.com/4.22.1/standard/ckeditor.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f0f0;
+      padding: 20px;
+    }
+
+    .form-wrapper {
+      background: #fff;
+      border: 1px solid #ccc;
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    fieldset {
+      border: 1px solid #aaa;
+      padding: 10px 15px;
+      margin-bottom: 20px;
+    }
+
+    legend {
+      font-weight: bold;
+      padding: 0 5px;
+    }
+
+    .form-row {
+      display: flex;
+      margin: 10px 0;
+    }
+
+    .form-label {
+      width: 160px;
+      font-size: 0.9em;
+      padding-top: 4px;
+    }
+
+    .form-input {
+      flex: 1;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 3px 6px;
+      font-size: 0.9em;
+      border: 1px solid #888;
+    }
+
+    .form-row input[type="checkbox"],
+    .form-row input[type="radio"] {
+      margin-right: 5px;
+    }
+
+    .static-text {
+      padding: 3px 6px;
+    }
+
+    .form-input.select {
+      display: flex;
+      align-items: center;
+    }
+
+    .form-input .tooltip {
+      margin-left: 5px;
+      font-weight: bold;
+      cursor: help;
+    }
+
+    .options-group {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .captcha {
+      background: #f2f2f2;
+      font-family: monospace;
+      font-size: 1.4em;
+      letter-spacing: 8px;
+      padding: 5px;
+      text-align: center;
+      border: 1px dotted #888;
+      margin-bottom: 5px;
+      width: 200px;
+    }
+
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      border-top: 1px solid #aaa;
+      padding-top: 10px;
+      margin-top: 20px;
+    }
+
+    .left-controls {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .nav-buttons {
+      display: flex;
+      gap: 5px;
+    }
+
+    .nav-buttons button {
+      font-size: 1em;
+      padding: 2px 8px;
+    }
+
+    .note {
+      font-size: 0.8em;
+      margin-top: 2px;
+    }
+
+    .button-group {
+      display: flex;
+      gap: 8px;
+    }
+
+    .button-group button {
+      padding: 5px 12px;
+      font-size: 0.9em;
+      cursor: pointer;
+    }
+    input[type="email"] {
+    color: #666; 
+    }
+  </style>
+</head>
+<body>
+  <form class="form-wrapper">
+    <fieldset>
+      <legend>Basic Info</legend>
+      <div class="form-row"><label class="form-label">Employee ID</label><div class="form-input"><span class="static-text">9</span></div></div>
+      <div class="form-row"><label class="form-label">Last Name</label><div class="form-input"><span class="static-text">Dodsworth</span></div></div>
+      <div class="form-row"><label class="form-label">First Name</label><div class="form-input"><input type="text" value="Anne" /></div></div>
+      <div class="form-row">
+        <label class="form-label">Gender</label>
+        <div class="form-input options-group">
+          <label><input type="radio" name="gender"> Male</label>
+          <label><input type="radio" name="gender"> Female</label>
+          <label><input type="radio" name="gender"> XXX</label>
+          <label><input type="radio" name="gender" checked> ZZZ</label>
+        </div>
+      </div>
+      <div class="form-row"><label class="form-label">Title</label><div class="form-input"><input type="text" value="Sales Representative" /></div></div>
+      <div class="form-row"><label class="form-label">Suffix</label><div class="form-input"><input type="text" value="Ms." /></div></div>
+      <div class="form-row"><label class="form-label">BirthDate</label><div class="form-input"><input type="text" value="1969-07-02 00:00:00" /></div></div>
+      <div class="form-row"><label class="form-label">HireDate</label><div class="form-input"><input type="text" value="1994-11-15 00:00:00" /></div></div>
+      <div class="form-row"><label class="form-label">SSN # (if applicable)</label><div class="form-input"><input type="text" /></div></div>
+      <div class="form-row">
+  <label class="form-label">Reports To</label>
+  <div class="form-input">
+    <select style="width: 160px;">
+      <option>Buchanan</option>
+      <option>Smith</option>
+    </select>
+  </div>
+</div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Contact Info</legend>
+      <div class="form-row"><label class="form-label">Email</label><div class="form-input"><input type="email" value="name@example.com" /></div></div>
+      <div class="form-row"><label class="form-label">Address</label><div class="form-input"><input type="text" value="7 Houndstooth Rd." /></div></div>
+      <div class="form-row"><label class="form-label">City</label><div class="form-input"><input type="text" value="London" /></div></div>
+      <div class="form-row"><label class="form-label">Region</label><div class="form-input"><input type="text" /></div></div>
+      <div class="form-row"><label class="form-label">Postal Code</label><div class="form-input"><input type="text" value="WG2 7LT" /></div></div>
+      <div class="form-row">
+         <label class="form-label">Country</label>
+            <div class="form-input">
+                <select style="width: 160px;">
+                     <option selected>Russian Federation</option>
+                     <option>UK</option>
+                 </select>
+             </div>
+        </div>
+      <div class="form-row"><label class="form-label">US Home Phone</label><div class="form-input"><input type="text" value="(234)234-2342" /></div></div>
+      <div class="form-row"><label class="form-label">Photo</label><div class="form-input"><input type="text" value="EmpID9.bmp" /></div></div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Optional Info</legend>
+      <div class="form-row">
+        <label class="form-label">Notes</label>
+        <div class="form-input">
+          <textarea id="notes">Anne has a BA degree in English from St. Lawrence College. She is fluent in French and German.ZZZ</textarea>
+        </div>
+      </div>
+      <div class="form-row">
+        <label class="form-label">Preferred Shift</label>
+        <div class="form-input options-group">
+          <label><input type="checkbox"> Regular</label>
+          <label><input type="checkbox" checked> Gravy Yard</label>
+        </div>
+      </div>
+      <div class="form-row">
+        <label class="form-label">Active?</label>
+        <div class="form-input"><input type="checkbox" checked /></div>
+      </div>
+      <div class="form-row">
+        <label class="form-label">Are you human?</label>
+        <div class="form-input">
+          <div class="captcha">TIDAWO</div>
+          <span>Click to change</span>
+          <input type="text" />
+        </div>
+      </div>
+    </fieldset>
+
+    <div class="footer">
+      <div class="left-controls">
+        <div class="nav-buttons">
+          <button type="button">&lt;</button>
+          <button type="button">&gt;</button>
+        </div>
+        <div class="note">* required</div>
+      </div>
+      <div class="button-group">
+        <button type="submit">🔳 Submit</button>
+        <button type="button">◀ Cancel</button>
+      </div>
+    </div>
+  </form>
+
+  <script>
+    CKEDITOR.replace('notes');
+  </script>
+</body>
+</html>
