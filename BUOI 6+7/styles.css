@@ -1,0 +1,28 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f8f9fa;
+}
+
+.btn-custom-gradient {
+    background: linear-gradient(45deg, #0d6efd, #0dcaf0);
+    border: none;
+    transition: transform 0.2s, box-shadow 0.2s, background 0.3s;
+}
+
+.btn-custom-gradient:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+    background: linear-gradient(45deg, #fa8585, #ce9cf7);
+}
+
+.card {
+    border: none;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+#notification-area {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1050;
+}
