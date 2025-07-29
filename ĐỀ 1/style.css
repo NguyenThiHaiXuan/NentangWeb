@@ -1,0 +1,13 @@
+body {
+    background-color: #f8f9fa;
+}
+.table-title {
+    background: #435d7d;
+    color: #fff;
+    padding: 16px 30px;
+    border-radius: 3px 3px 0 0;
+}
+.table-title h2 {
+    margin: 0;
+    font-size: 24px;
+}
