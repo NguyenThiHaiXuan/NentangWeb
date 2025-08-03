@@ -1,10 +1,10 @@
-document.addEventListener('DOMContentLoaded', function() {
+$(document).ready(function() {
 
-    const tableBody = document.getElementById('transaction-table-body');
-    const addTransactionForm = document.getElementById('addTransactionForm');
-    const addTransactionModal = new bootstrap.Modal(document.getElementById('addTransactionModal'));
-    const paginationUl = document.getElementById('pagination-ul');
-    const paginationInfo = document.getElementById('pagination-info');
+    const $tableBody = $('#transaction-table-body');
+    const $addTransactionForm = $('#addTransactionForm');
+    const $addTransactionModal = new bootstrap.Modal($('#addTransactionModal'));
+    const $paginationUl = $('#pagination-ul');
+    const $paginationInfo = $('#pagination-info');
 
     let currentPage = 1;
     const rowsPerPage = 5;
@@ -24,8 +24,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     function renderTable(data) {
-        tableBody.innerHTML = '';
-        data.forEach(item => {
+        $tableBody.empty();
+        $.each(data, function(index, item) {
             const row = `
                 <tr>
                     <td class="text-center"><input class="form-check-input" type="checkbox"></td>
@@ -41,44 +41,42 @@ document.addEventListener('DOMContentLoaded', function() {
                     <td>${formatDate(item.ngayMua)}</td>
                 </tr>
             `;
-            tableBody.innerHTML += row;
+            $tableBody.append(row);
         });
     }
 
     function setupPagination(totalItems) {
-        paginationUl.innerHTML = '';
+        $paginationUl.empty();
         const pageCount = Math.ceil(totalItems / rowsPerPage);
 
         const createButton = (text, page, isDisabled = false) => {
-            const li = document.createElement('li');
-            li.classList.add('page-item');
-            if (isDisabled) li.classList.add('disabled');
-            const a = document.createElement('a');
-            a.classList.add('page-link');
-            a.href = '#';
-            a.innerHTML = text;
+            const $li = $('<li>').addClass('page-item');
+            if (isDisabled) $li.addClass('disabled');
+            
+            const $a = $('<a>').addClass('page-link').attr('href', '#').html(text);
+            
             if (!isDisabled) {
-                a.addEventListener('click', function(e) {
+                $a.on('click', function(e) {
                     e.preventDefault();
                     currentPage = page;
                     displayPage();
                 });
             }
-            li.appendChild(a);
-            return li;
+            $li.append($a);
+            return $li;
         };
 
-        paginationUl.appendChild(createButton('«', 1, currentPage === 1));
-        paginationUl.appendChild(createButton('<', currentPage - 1, currentPage === 1));
+        $paginationUl.append(createButton('«', 1, currentPage === 1));
+        $paginationUl.append(createButton('<', currentPage - 1, currentPage === 1));
 
         for (let i = 1; i <= pageCount; i++) {
-            const li = createButton(i, i, false);
-            if (i === currentPage) li.classList.add('active');
-            paginationUl.appendChild(li);
+            const $li = createButton(i, i, false);
+            if (i === currentPage) $li.addClass('active');
+            $paginationUl.append($li);
         }
 
-        paginationUl.appendChild(createButton('>', currentPage + 1, currentPage === pageCount));
-        paginationUl.appendChild(createButton('»', pageCount, currentPage === pageCount));
+        $paginationUl.append(createButton('>', currentPage + 1, currentPage === pageCount));
+        $paginationUl.append(createButton('»', pageCount, currentPage === pageCount));
     }
     
     function displayPage() {
@@ -90,15 +88,15 @@ document.addEventListener('DOMContentLoaded', function() {
         setupPagination(transactions.length);
         
         const totalPages = Math.ceil(transactions.length / rowsPerPage);
-        paginationInfo.innerText = `Kết quả ${currentPage} trong ${totalPages} trang`;
+        $paginationInfo.text(`Kết quả ${currentPage} trong ${totalPages} trang`);
     }
 
-    addTransactionForm.addEventListener('submit', function(event) {
+    $addTransactionForm.on('submit', function(event) {
         event.preventDefault();
 
-        const customerName = document.getElementById('customerName').value.trim();
-        const employeeName = document.getElementById('employeeName').value.trim();
-        const amount = document.getElementById('amount').value.trim();
+        const customerName = $('#customerName').val().trim();
+        const employeeName = $('#employeeName').val().trim();
+        const amount = $('#amount').val().trim();
 
         let errors = [];
         if (customerName === '') { errors.push('Tên Khách hàng không được bỏ trống.'); }
@@ -126,8 +124,8 @@ document.addEventListener('DOMContentLoaded', function() {
             
             displayPage(); 
 
-            addTransactionForm.reset();
-            addTransactionModal.hide();
+            $addTransactionForm[0].reset();
+            $addTransactionModal.hide();
         }
     });
 
