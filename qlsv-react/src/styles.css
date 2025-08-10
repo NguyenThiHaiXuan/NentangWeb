@@ -1,0 +1,20 @@
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #343a40;
+  color: white;
+  padding: 8px 15px; /* padding trên, dưới và trái phải */
+  text-align: left;   /* canh trái */
+  display: flex;
+  align-items: flex-start;  /* căn chữ lên trên */
+  /* Nếu bạn muốn cao footer lớn, có thể thêm min-height */
+  min-height: 40px;
+  z-index: 1000;
+}
+
+
+.main-content {
+  padding-bottom: 60px; /* cao hơn hoặc bằng footer height */
+}
